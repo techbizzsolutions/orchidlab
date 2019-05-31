@@ -1,0 +1,46 @@
+<ion-header>
+
+    <ion-navbar color="header">
+
+        <ion-title>Orchid Lab</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="refresh()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+            <button ion-button icon-only (click)="presentDatePopover($event)">
+        <ion-icon name="ios-funnel"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <!-- <ion-list *ngIf="bill.length">
+        <ion-item-sliding #slidingItem *ngFor="let item of bill">
+            <ion-item (click)="itemclick(item)">
+                <ion-card>
+                    <h6>Name: {{item.Name}}</h6>
+                    <h6>Mobile: {{item.Mobile}}</h6>
+                    <h6>Type of Sale: {{item.type}}</h6>
+                    <p>Created Date: {{item.date}}</p>
+                    <p>Amount: {{item.saleamount}}</p>
+                </ion-card>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="primary" (click)="edit(item,slidingItem)">
+          <ion-icon name="create"></ion-icon>
+          Edit
+        </button>
+                <button ion-button color="danger" (click)="delete(item,slidingItem)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-list>
+    <ion-card *ngIf="!bill.length">
+        <h6>No data found</h6>
+    </ion-card> -->
+</ion-content>

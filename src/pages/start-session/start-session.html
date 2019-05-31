@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar color="header">
+        <ion-title>Orchid Lab</ion-title>
+    </ion-navbar>
+    <ion-searchbar color="header" (ionInput)="getItems($event)" placeholder="Mobile number"></ion-searchbar>
+</ion-header>
+
+<ion-content padding>
+    <h5>Start Session</h5>
+    <ion-list>
+        <ion-item *ngFor="let item of members; let i=index;">
+            <h2>{{item.Name}}</h2>
+            <p>{{item.Mobile}}</p>
+            <p>{{item.Password}}</p>
+            <button ion-button item-end (click)="session(item,i)">Start</button>
+        </ion-item>
+    </ion-list>
+    <h6 *ngIf="!members.length">User not added yet</h6>
+</ion-content>

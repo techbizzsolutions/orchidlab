@@ -1,0 +1,26 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Orchid Lab</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <h5>Activation App</h5>
+    <form [formGroup]="register" (ngSubmit)="logForm()">
+        <ion-item>
+            <ion-label floating>Activation Code</ion-label>
+            <ion-input type="text" formControlName="Code"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Code'].valid && register.controls['Code'].touched">Please Enter a Activation Code</div>
+        </div>
+        <!-- Float the icon right -->
+        <div class="button_div">
+            <button ion-button [disabled]="!register.valid" block icon-right>
+            Activate App
+      </button>
+        </div>
+    </form>
+</ion-content>

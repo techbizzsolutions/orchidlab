@@ -1,0 +1,39 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-buttons left>
+            <button ion-button icon-only (click)="close()">
+                        <ion-icon name="md-close-circle"></ion-icon>
+                    </button>
+        </ion-buttons>
+        <ion-title>Add Test Case</ion-title>
+
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form [formGroup]="register" (ngSubmit)="logForm()">
+        <ion-item>
+            <ion-label floating>Test Name</ion-label>
+            <ion-input type="text" formControlName="testname"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['testname'].valid && register.controls['testname'].touched">Please Enter Test Name</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Rate</ion-label>
+            <ion-input type="number" formControlName="rate"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['rate'].valid && register.controls['rate'].touched">Please Enter Rate</div>
+        </div>
+        <!-- Float the icon right -->
+        <div class="button_div">
+            <button ion-button [disabled]="!register.valid" block icon-right>
+            Add
+             </button>
+        </div>
+    </form>
+</ion-content>

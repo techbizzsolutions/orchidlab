@@ -1,0 +1,130 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>Orchid Lab</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="print()">
+                <ion-icon name="md-print"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <div id="print" class="borderdivP">
+        <table *ngIf="companyinfo" style="width:100%">
+            <tr>
+                <td>
+                    <p class="removeMrgin">
+                        <strong style="font-size: 13px!important;">{{companyinfo.Name}}</strong>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="removeMrgin">{{companyinfo.Address}}</p>
+                </td>
+            </tr>
+        </table>
+        <table *ngIf="Bills" style="width:100%">
+            <tr>
+                <td class="tablealign">
+                    <p class="removeMrginpadding">Tel ph no:
+                        <strong>{{companyinfo.TelOne}}, {{companyinfo.TelTwo}}</strong>
+                    </p>
+                    <p class="removeMrginpadding">Mobile:
+                        <strong>{{companyinfo.MobileOne}}, {{companyinfo.MobileTwo}}</strong>
+                    </p>
+                </td>
+                <td class="tablealignright">
+                    <p class="removeMrginpadding">Email:
+                        <strong>{{companyinfo.Email}}</strong>
+                    </p>
+                    <p class="removeMrginpadding">Website:
+                        <strong>{{companyinfo.Website}}</strong>
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <p class="invoice">
+            <strong style="font-size: 13px!important;">INVOICE</strong>
+        </p>
+        <table *ngIf="Bills" style="width:100%">
+            <tr>
+                <td class="tablealign">
+                    <p class="removeMrginpadding">Invoice No:
+                        <strong>{{Bills.Invoice}}</strong>
+                    </p>
+                    <p class="removeMrginpadding">Name:
+                        <strong>{{Bills.Patient}}</strong>
+                    </p>
+                </td>
+                <td class="tablealignright">
+                    <p class="removeMrginpadding">Date:
+                        <strong>{{Bills.date}}</strong>
+                    </p>
+                    <p class="removeMrginpadding">Lab No:
+                        <strong>{{Bills.Lab}}</strong>
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <table *ngIf="Bills" style="width:100%">
+            <tr>
+                <th style="width:70%;border: 1px dotted;">Particulars</th>
+                <th style="width:30%;border: 1px dotted;">Amount</th>
+            </tr>
+            <tr >
+                    <th style="width:70%">
+                        <p class="textcase">Tests Carried Out</p>
+                    </th>
+                    <th style="width:30%"></th>
+            </tr>
+            <tr *ngFor="let item of Bills.testCaselist; let i=index;">
+                <th style="width:70%">
+                    <p class="textcase">{{item.testname}} <span *ngIf="item.Description">({{item.Description}})</span></p>
+                </th>
+                <th style="width:30%">{{item.Rate}}</th>
+            </tr>
+        </table>
+        <table *ngIf="Bills" style="width:100%;border: 1px dotted;">
+            <tr>
+                <th style="width:70%;border-right: 1px dotted;text-align: right;
+                padding-right: 20px;">Less</th>
+                <th *ngIf="Bills.discount" style="width:30%">{{Bills.discount}}</th>
+                <th *ngIf="!Bills.discount" style="width:30%">0</th>
+            </tr>
+            <tr>
+                <th style="width:70%;border-right: 1px dotted;text-align: right;
+                padding-right: 20px;">Add</th>
+                <th *ngIf="Bills.labourcharge" style="width:30%">{{Bills.labourcharge}}</th>
+                <th *ngIf="!Bills.labourcharge" style="width:30%">0</th>
+            </tr>
+            <tr>
+                <th style="width:70%;border-right: 1px dotted;text-align: right;
+                padding-right: 20px;">Net Amount</th>
+                <th style="width:30%">{{Bills.totalnetamount}}</th>
+            </tr>
+        </table>
+        <table *ngIf="Bills" style="width:100%">
+                <tr>
+                    <td class="tablealign">
+                    </td>
+                    <td class="tablealignright" style="padding-top: 30px!important;">
+                        <p class="removeMrginpadding"><span>For {{companyinfo.Name}}</span> 
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        <!-- <table *ngIf="companyinfo" style="width:100%">
+            <tr>
+                <td>
+                    <strong>Term and Conditions:</strong>
+                    <p class="removeMrginpadding" style="text-align: justify;">{{companyinfo.Term}}</p>
+                </td>
+            </tr>
+        </table> -->
+    </div>
+</ion-content>

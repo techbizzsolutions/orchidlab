@@ -1,0 +1,53 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-buttons left>
+            <button ion-button icon-only (click)="close()">
+                      <ion-icon name="md-close-circle"></ion-icon>
+                  </button>
+        </ion-buttons>
+        <ion-title>Select Test Case</ion-title>
+
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+        <ion-item>
+                <ion-label>Select Test</ion-label>
+                <select-searchable
+                    item-content
+                    [(ngModel)]="port"
+                    [items]="ports"
+                    itemValueField="testname"
+                    itemTextField="testname"
+                    [canSearch]="true"
+                    (onChange)="portChange($event)">
+                </select-searchable>
+            </ion-item>
+    <!-- <ion-item>
+        <ion-label>Select Test</ion-label>
+        <ion-select interface="popover" [(ngModel)]="Type" [compareWith]="compareFn">
+            <ion-option *ngFor="let item of testlist" (ionSelect)="select(item)" [value]="item">{{item.testname}}</ion-option>
+        </ion-select>
+    </ion-item> -->
+    <form [formGroup]="register" (ngSubmit)="logForm()">
+        <ion-item>
+            <ion-label floating>Description</ion-label>
+            <ion-input type="text" formControlName="Description"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Rate</ion-label>
+            <ion-input type="text" formControlName="Rate"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Rate'].valid && register.controls['Rate'].touched">Please Enter Rate</div>
+        </div>
+        <!-- Float the icon right -->
+        <div class="button_div">
+            <button ion-button [disabled]="!register.valid" block icon-right>
+          ADD
+           </button>
+        </div>
+    </form>
+</ion-content>

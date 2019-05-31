@@ -1,0 +1,19 @@
+page-admin-home {
+    .removmargin {
+        margin-bottom: 0px!important;
+        margin-top: 0!important;
+        color: color($colors, header)!important;
+    }
+    ion-card {
+        padding: 5px !important;
+    }
+    .label-md {
+        margin: 0px !important;
+    }
+    p {
+        white-space: normal !important;
+    }
+    h6 {
+        color: color($colors, header)!important;
+    }
+}

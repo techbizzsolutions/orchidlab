@@ -1,0 +1,36 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-buttons left>
+            <button ion-button icon-only (click)="close()">
+                    <ion-icon name="md-close-circle"></ion-icon>
+                </button>
+        </ion-buttons>
+        <ion-title>Filter</ion-title>
+
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="register" (ngSubmit)="logForm()">
+        <ion-item (click)="opencal()">
+            <ion-label class="marginlbl">Select Date <span style="float: right;">{{From}}</span></ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Name</ion-label>
+            <ion-input type="text" formControlName="Name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Mobile Number</ion-label>
+            <ion-input type="number" formControlName="Mobile"></ion-input>
+        </ion-item>
+        <!-- Float the icon right -->
+        <div class="button_div">
+            <button ion-button [disabled]="!register.valid" block icon-right>
+            Next
+            <ion-icon name="md-arrow-round-forward"></ion-icon>
+             </button>
+        </div>
+    </form>
+</ion-content>

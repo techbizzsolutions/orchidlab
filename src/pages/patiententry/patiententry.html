@@ -1,0 +1,146 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-buttons left>
+            <button ion-button menuToggle>
+        <ion-icon name="md-list"></ion-icon>
+      </button>
+        </ion-buttons>
+        <ion-title>Orchid Lab</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <h5>Patient Entry</h5>
+    <form [formGroup]="register">
+        <ion-row>
+            <ion-col col-6>
+                <ion-item>
+                    <ion-label class="marginlbl">Date</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col col-6>
+                <ion-item (click)="opencal()">
+                    <ion-label class="marginlbl">{{ date }}</ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-item>
+            <ion-label floating>Invoice No.</ion-label>
+            <ion-input type="text" formControlName="Invoice"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Invoice'].valid && register.controls['Invoice'].touched">Please Enter Invoice No.</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Lab No.</ion-label>
+            <ion-input type="number" formControlName="Lab"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Lab'].valid && register.controls['Lab'].touched">Please Enter Lab No.</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Patient Name</ion-label>
+            <ion-input type="Text" formControlName="Patient"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Patient'].valid && register.controls['Patient'].touched">Please Enter Patient Name</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Mobile number</ion-label>
+            <ion-input type="Text" formControlName="Mobile"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Mobile'].valid && register.controls['Mobile'].touched">Please Enter Mobile number</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Age</ion-label>
+            <ion-input type="number" formControlName="Age"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Age'].valid && register.controls['Age'].touched">Please Enter Age</div>
+        </div>
+        <ion-item>
+            <ion-label floating>History/Dignosis</ion-label>
+            <ion-input type="Text" formControlName="Dignosis"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Dignosis'].valid && register.controls['Dignosis'].touched">Please Enter History/Dignosis</div>
+        </div>
+        <ion-list style="margin-top: 5px !important;">
+            <ion-item-divider color="light" class="dividerpadding">
+                Test Details
+            </ion-item-divider>
+            <ion-item>
+                <ion-row *ngFor="let item of testCaselist">
+                    <ion-col col-12>
+                        <p class="subtitle">
+                            <ion-icon color="primary" name="md-create" (click)="presentDatePopover(item)"></ion-icon>
+                            <span class="subvalue">
+                                <ion-icon color="danger" (click)="delete(item)" name="trash"></ion-icon>
+                            </span>
+                        </p>
+                        <p class="subtitle">Test Name: <span class="subvalue">{{item.testname}}</span></p>
+                        <p class="subtitle">Test Name Description: <span class="subvalue">{{item.Description}}</span></p>
+                        <p class="subtitle">Rate: <span class="subvalue"> {{item.Rate}}</span></p>
+                    </ion-col>
+                </ion-row>
+                <hr>
+                <p class="title" (click)="presentDatePopover($event,{})">
+                    <ion-icon color="primary" name="md-add-circle"></ion-icon> Add Test</p>
+
+            </ion-item>
+            <ion-item>
+                <ion-row>
+                    <ion-col col-12>
+                        <p> Total Amount: <span class="subvalue">{{totalamount}}</span></p>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+            <ion-row>
+                    <ion-col col-8>
+                        <ion-item>
+                            Add:
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-4>
+                        <ion-input class="align" type="number" formControlName="labourcharge"></ion-input>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-8>
+                        <ion-item>
+                            Less:
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-4>
+                        <ion-input class="align" type="number" formControlName="discount"></ion-input>
+                    </ion-col>
+                </ion-row>
+    
+                <ion-item>
+                    <ion-row>
+                        <ion-col col-12>
+                            <p> Net Amount:
+                                <span class="subvalue">{{totalnetamount}}</span>
+                            </p>
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                
+        </ion-list>
+        <div class="button_div">
+            <button ion-button small (click)="cal()" [disabled]="!register.valid">
+                Calculate Amount
+            </button>
+        </div>
+        <!-- Float the icon right -->
+        <div class="button_div">
+            <button ion-button [disabled]="!register.valid" (click)="logForm()" block icon-right>
+            Add
+             </button>
+        </div>
+    </form>
+</ion-content>

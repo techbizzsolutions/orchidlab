@@ -1,0 +1,90 @@
+<ion-header>
+
+    <ion-navbar color="header">
+
+        <ion-title>Orchid Lab</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h5>Company Information</h5>
+    <form [formGroup]="register" (ngSubmit)="logForm()">
+        <ion-item>
+            <ion-label floating>Company Name</ion-label>
+            <ion-input type="text" formControlName="Name"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Name'].valid && register.controls['Name'].touched">Please Enter Company Name</div>
+        </div>
+        <ion-item>
+            <ion-textarea placeholder="Company Address" rows="4" formControlName="Address"></ion-textarea>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Address'].valid && register.controls['Address'].touched">Enter Company Address</div>
+        </div>
+        <ion-item>
+            <ion-label floating> Owner Name</ion-label>
+            <ion-input type="text" formControlName="Proprietor"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Proprietor'].valid && register.controls['Proprietor'].touched">Please Enter Owner Name</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Tel ph Number One</ion-label>
+            <ion-input type="number" formControlName="TelOne"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['TelOne'].valid && register.controls['TelOne'].touched">Please Enter Tel. Number One</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Tel ph Number Two</ion-label>
+            <ion-input type="number" formControlName="TelTwo"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['TelTwo'].valid && register.controls['TelTwo'].touched">Please Enter Tel. Number Two</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Mobile Number One</ion-label>
+            <ion-input type="number" formControlName="MobileOne"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['MobileOne'].valid && register.controls['MobileOne'].touched">Please Enter a mobile number</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Mobile Number Two</ion-label>
+            <ion-input type="number" formControlName="MobileTwo"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['MobileTwo'].valid && register.controls['MobileTwo'].touched">Please Enter a mobile number</div>
+        </div>
+        <ion-item>
+            <ion-label floating>Enter Email</ion-label>
+            <ion-input type="email" formControlName="Email"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Email'].valid && register.controls['Email'].touched">Enter Email </div>
+        </div>
+        <ion-item>
+            <ion-label floating>Enter Establish in</ion-label>
+            <ion-input type="text" formControlName="Establish"></ion-input>
+        </ion-item>
+        <div padding-horizontal>
+            <div class="alert" *ngIf="!register.controls['Establish'].valid && register.controls['Establish'].touched">Enter Establish in </div>
+        </div>
+        <ion-item>
+            <ion-label floating>Enter Website</ion-label>
+            <ion-input type="text" formControlName="Website"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-textarea placeholder="Enter Term and Conditions" rows="4" formControlName="Term"></ion-textarea>
+        </ion-item>
+        <!-- Float the icon right -->
+        <div class="button_div">
+            <button ion-button [disabled]="!register.valid" block icon-right>
+            submit
+             </button>
+        </div>
+    </form>
+</ion-content>
